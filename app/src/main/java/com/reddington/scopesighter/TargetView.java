@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
 public class TargetView extends View {
-    Paint bullsEyePaint;
     Paint hitPaint;
     private ArrayList<Hit> hits;
     private float ringIncrement;
@@ -22,12 +21,9 @@ public class TargetView extends View {
         super(context);
         this.hits = new ArrayList<>();
         this.ringsPaint = new Paint();
-        this.bullsEyePaint = new Paint();
         this.hitPaint = new Paint();
         this.ringsPaint.setColor(SupportMenu.CATEGORY_MASK);
         this.ringsPaint.setStyle(Paint.Style.STROKE);
-        this.bullsEyePaint.setColor(SupportMenu.CATEGORY_MASK);
-        this.bullsEyePaint.setStyle(Paint.Style.FILL);
         this.hitPaint.setColor(ViewCompat.MEASURED_STATE_MASK);
         this.hitPaint.setStyle(Paint.Style.FILL);
     }
@@ -36,15 +32,12 @@ public class TargetView extends View {
         super(context);
         this.hits = new ArrayList<>();
         this.ringsPaint = new Paint();
-        this.bullsEyePaint = new Paint();
         this.hitPaint = new Paint();
         this.x = f2;
         this.y = f3;
         this.ringIncrement = f / 6.0f;
         this.ringsPaint.setColor(SupportMenu.CATEGORY_MASK);
         this.ringsPaint.setStyle(Paint.Style.STROKE);
-        this.bullsEyePaint.setColor(SupportMenu.CATEGORY_MASK);
-        this.bullsEyePaint.setStyle(Paint.Style.FILL);
         this.hitPaint.setColor(ViewCompat.MEASURED_STATE_MASK);
         this.hitPaint.setStyle(Paint.Style.FILL);
     }
@@ -53,7 +46,7 @@ public class TargetView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.drawCircle(this.x, this.y, this.ringIncrement * 3.0f, this.ringsPaint);
         canvas.drawCircle(this.x, this.y, this.ringIncrement * 2.0f, this.ringsPaint);
-        canvas.drawCircle(this.x, this.y, this.ringIncrement, this.bullsEyePaint);
+        canvas.drawCircle(this.x, this.y, this.ringIncrement, this.ringsPaint);
         for (Hit hit : this.hits) {
             canvas.drawCircle(hit.getX(), hit.getY(), 10.0f, this.hitPaint);
         }
