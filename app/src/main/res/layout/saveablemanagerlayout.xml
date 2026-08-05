@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#ffffff" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/saveableManagerLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="true" android:shrinkColumns="true">
+                <TableRow android:stretchColumns="true" android:shrinkColumns="true">
+                    <Spinner android:id="@id/scopeListSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_span="2" android:prompt="@string/scope_prompt" android:layout_weight="1.0" />
+                </TableRow>
+                <TableRow android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="#000000" android:id="@id/nameOfScopeTextView" android:paddingLeft="10.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/scopeNamePrompt" android:layout_weight="0.5" />
+                    <EditText android:id="@id/scopeNameEditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="0.5" android:inputType="text" />
+                </TableRow>
+                <TableRow android:gravity="center">
+                    <TextView android:textColor="#000000" android:gravity="top" android:id="@id/clockwiseUpTextView" android:paddingLeft="10.0dp" android:paddingTop="10.0dp" android:paddingBottom="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clockwiseAdjustsUpText" android:lines="3" android:layout_weight="0.5" />
+                    <Button android:id="@id/clockwiseUpToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggleUp" android:layout_weight="0.5" />
+                </TableRow>
+                <TableRow android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="#000000" android:id="@id/clockwiseLeftTextView" android:paddingLeft="10.0dp" android:paddingTop="5.0dp" android:paddingBottom="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dp" android:text="@string/clockwiseAdjustsLeftText" android:lines="3" android:layout_weight="0.5" />
+                    <Button android:id="@id/clockwiseLeftToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggleLeft" android:layout_weight="0.5" android:onClick="onWindageButtonClicked" />
+                </TableRow>
+                <TableRow android:gravity="center">
+                    <TextView android:textColor="#000000" android:id="@id/oneClickEqualsTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneClickEqualsText" android:layout_weight="0.5" />
+                    <EditText android:id="@id/oneClickEqualsEditText" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/inInputPrompt" android:layout_weight="0.5" android:inputType="numberSigned|numberDecimal" />
+                </TableRow>
+                <TableRow android:gravity="center">
+                    <TextView android:textColor="#000000" android:id="@id/inchesTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/inchesAtText" android:layout_weight="0.5" />
+                    <EditText android:id="@id/yardsForAdjustEditText" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yardsInputPrompt" android:layout_weight="0.5" android:inputType="numberSigned|numberDecimal" />
+                </TableRow>
+                <TableRow>
+                    <Button android:id="@id/saveScopeButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/saveScopeButtonText" android:layout_weight="0.99" />
+                    <Button android:id="@id/deleteScopeButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/deleteScopeButtonText" android:layout_weight="0.5" />
+                </TableRow>
+            </TableLayout>
+            <TableLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:stretchColumns="true" android:shrinkColumns="true">
+                <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Spinner android:id="@id/rangeListSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_span="3" android:prompt="@string/range_prompt" android:layout_weight="1.0" />
+                </TableRow>
+                <TableRow>
+                    <TextView android:textColor="#000000" android:id="@id/nameOfRangeTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rangeNamePrompt" android:layout_weight="0.5" />
+                    <EditText android:id="@id/rangeNameEditText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/testString" android:layout_weight="0.5" android:inputType="text" />
+                </TableRow>
+                <TableRow>
+                    <TextView android:textColor="#000000" android:id="@id/feetToTargetTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/feetToTargetText" android:layout_weight="0.5" />
+                    <EditText android:id="@id/feetToTargetEditText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/ftInputPrompt" android:layout_weight="0.5" android:inputType="numberSigned|numberDecimal" />
+                </TableRow>
+                <TableRow>
+                    <TextView android:textColor="#000000" android:id="@id/diameterOfTargetTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diameterOfTargetText" android:layout_weight="0.5" />
+                    <EditText android:id="@id/diameterOfTargetEditText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/inInputPrompt" android:layout_weight="0.5" android:inputType="numberSigned|numberDecimal" />
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@id/saveRangeButton" android:text="@string/saveRangeButtonText" android:layout_weight="0.333" />
+                    <Button android:id="@id/deleteRangeButton" android:text="@string/deleteRangeButtonText" android:layout_weight="0.333" />
+                    <Button android:id="@id/backButton" android:text="@string/backButtonText" android:layout_weight="0.333" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

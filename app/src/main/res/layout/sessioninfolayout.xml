@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/pleaseInputValuesTextView" android:background="#4284d3" android:paddingLeft="15.0dp" android:paddingTop="20.0dp" android:paddingBottom="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pleaseInputValuesText" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/feetToTargetTextView" android:paddingLeft="15.0dp" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/feetToTargetText" android:layout_alignParentLeft="true" />
+        <EditText android:id="@id/feetToTargetEditText" android:paddingLeft="50.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ftInputPrompt" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/diameterOfTargetTextView" android:paddingLeft="15.0dp" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/diameterOfTargetText" android:layout_alignParentLeft="true" />
+        <EditText android:id="@id/diameterOfTargetEditText" android:paddingLeft="50.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/inInputPrompt" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/oneClickEqualsTextView" android:paddingLeft="15.0dp" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneClickEqualsText" android:layout_alignParentLeft="true" />
+        <EditText android:id="@id/oneClickEqualsEditText" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/inInputPrompt" />
+        <TextView android:textColor="#000000" android:id="@id/inchesTextView" android:paddingLeft="4.0dp" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/inchesAtText" android:layout_alignParentLeft="true" />
+        <EditText android:id="@id/yardsForAdjustEditText" android:paddingLeft="4.0dp" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yardsInputPrompt" />
+        <TextView android:textColor="#000000" android:id="@id/yardsTextView" android:paddingLeft="4.0dp" android:paddingTop="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yardsText" android:layout_alignParentLeft="true" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/clockwiseUpTextView" android:paddingLeft="15.0dp" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clockwiseAdjustsUpText" android:layout_alignParentLeft="true" />
+        <Spinner android:id="@id/clockwiseUpSpinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:prompt="@string/tfPrompt" android:layout_alignParentRight="true" />
+        <TextView android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TextView" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textColor="#000000" android:id="@id/clockwiseLeftTextView" android:paddingLeft="15.0dp" android:paddingTop="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clockwiseAdjustsLeftText" android:layout_alignParentLeft="true" />
+        <Spinner android:id="@id/clockwiseLeftSpinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:prompt="@string/tfPrompt" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:paddingTop="20.0dp" android:layout_width="match_parent" android:layout_height="match_parent" />
+    <Button android:id="@id/goButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/goButtonText" />
+</LinearLayout>
