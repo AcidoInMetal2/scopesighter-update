@@ -220,23 +220,23 @@ public class ScopeSighterApplication extends Application {
         boolean z3 = true;
         if (z2) {
             Range range = (Range) savable;
+            z = false;
             Iterator<Savable> it = this.savables.iterator();
-            while (true) {
-                if (it.hasNext()) {
-                    Savable next = it.next();
-                    if (next instanceof Range) {
-                        Range range2 = (Range) next;
-                        if (range.equals(range2)) {
-                            this.savables.remove(next);
-                        } else if (range.getName().equals(range2.getName())) {
-                            this.savables.remove(next);
-                            this.savables.add(savable);
-                            setActiveRange(next.getName());
-                        }
+            while (it.hasNext()) {
+                Savable next = it.next();
+                if (next instanceof Range) {
+                    Range range2 = (Range) next;
+                    if (range.equals(range2)) {
+                        this.savables.remove(next);
                         z = true;
+                        break;
+                    } else if (range.getName().equals(range2.getName())) {
+                        this.savables.remove(next);
+                        this.savables.add(savable);
+                        setActiveRange(next.getName());
+                        z = true;
+                        break;
                     }
-                } else {
-                    z = false;
                 }
             }
         } else {
@@ -244,26 +244,26 @@ public class ScopeSighterApplication extends Application {
         }
         if (!(savable instanceof Scope)) {
             z3 = z;
-            break;
-        }
-        Scope scope = (Scope) savable;
-        Iterator<Savable> it2 = this.savables.iterator();
-        while (true) {
-            if (!it2.hasNext()) {
-                z3 = z;
-                break;
-            }
-            Savable next2 = it2.next();
-            if (next2 instanceof Scope) {
-                Scope scope2 = (Scope) next2;
-                if (scope.equals(scope2)) {
-                    this.savables.remove(next2);
+        } else {
+            Scope scope = (Scope) savable;
+            Iterator<Savable> it2 = this.savables.iterator();
+            while (true) {
+                if (!it2.hasNext()) {
+                    z3 = z;
                     break;
-                } else if (scope.getName().equals(scope2.getName())) {
-                    this.savables.remove(next2);
-                    this.savables.add(savable);
-                    setActiveScope(next2.getName());
-                    break;
+                }
+                Savable next2 = it2.next();
+                if (next2 instanceof Scope) {
+                    Scope scope2 = (Scope) next2;
+                    if (scope.equals(scope2)) {
+                        this.savables.remove(next2);
+                        break;
+                    } else if (scope.getName().equals(scope2.getName())) {
+                        this.savables.remove(next2);
+                        this.savables.add(savable);
+                        setActiveScope(next2.getName());
+                        break;
+                    }
                 }
             }
         }

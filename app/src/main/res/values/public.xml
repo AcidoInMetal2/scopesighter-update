@@ -471,7 +471,7 @@
     <public type="dimen" name="tooltip_vertical_padding" id="0x7f06006c" />
     <public type="dimen" name="tooltip_y_offset_non_touch" id="0x7f06006d" />
     <public type="dimen" name="tooltip_y_offset_touch" id="0x7f06006e" />
-    <public type="drawable" name="$ic_launcher_foreground__0" id="0x7f070000" />
+    <public type="drawable" name="ic_launcher_foreground__0" id="0x7f070000" />
     <public type="drawable" name="abc_ab_share_pack_mtrl_alpha" id="0x7f070001" />
     <public type="drawable" name="abc_action_bar_item_background_material" id="0x7f070002" />
     <public type="drawable" name="abc_btn_borderless_material" id="0x7f070003" />
