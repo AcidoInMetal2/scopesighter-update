@@ -2,9 +2,8 @@ package com.reddington.scopesighter;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.v4.internal.view.SupportMenu;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import java.util.ArrayList;
 
@@ -22,9 +21,9 @@ public class TargetView extends View {
         this.hits = new ArrayList<>();
         this.ringsPaint = new Paint();
         this.hitPaint = new Paint();
-        this.ringsPaint.setColor(SupportMenu.CATEGORY_MASK);
+        this.ringsPaint.setColor(Color.RED);
         this.ringsPaint.setStyle(Paint.Style.STROKE);
-        this.hitPaint.setColor(ViewCompat.MEASURED_STATE_MASK);
+        this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
     }
 
@@ -36,9 +35,9 @@ public class TargetView extends View {
         this.x = f2;
         this.y = f3;
         this.ringIncrement = f / 6.0f;
-        this.ringsPaint.setColor(SupportMenu.CATEGORY_MASK);
+        this.ringsPaint.setColor(Color.RED);
         this.ringsPaint.setStyle(Paint.Style.STROKE);
-        this.hitPaint.setColor(ViewCompat.MEASURED_STATE_MASK);
+        this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
     }
 
