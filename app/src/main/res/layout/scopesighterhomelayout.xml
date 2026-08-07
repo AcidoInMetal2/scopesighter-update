@@ -25,4 +25,7 @@
         <Button android:id="@id/helpButton" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_span="1" android:text="@string/helpButtonText" android:layout_weight="0.5" />
         <Button android:id="@id/unitsButton" android:layout_width="0.0px" android:layout_height="wrap_content" android:layout_span="1" android:layout_weight="0.5" />
     </TableRow>
+    <TableRow android:background="@android:color/transparent" android:paddingTop="15.0dp">
+        <Button android:id="@+id/selectLanguageButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/selectLanguageButtonText" />
+    </TableRow>
 </TableLayout>

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
-public class SessionResultsActivity extends Activity {
+public class SessionResultsActivity extends BaseActivity {
     Button homeButton;
     Button newSessionButton;
     Result r;

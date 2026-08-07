@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
-public class AboutActivity extends Activity {
+public class AboutActivity extends BaseActivity {
     @Override // android.app.Activity
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

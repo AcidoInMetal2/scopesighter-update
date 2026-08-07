@@ -47,7 +47,9 @@ shot placement:"</string>
     <string name="clockwiseAdjustsUpText">"1 elevation increment
 clockwise moves
 shot placement:"</string>
+    <string name="clockwiseText">clockwise</string>
     <string name="closeButtonText">Close</string>
+    <string name="counterClockwiseText">counter-clockwise</string>
     <string name="deleteRangeButtonText">Delete Range</string>
     <string name="deleteScopeButtonText">Delete Scope</string>
     <string name="dialogBodyText">"1) Click the \"Scope And Range Manager\" Button 
@@ -70,6 +72,8 @@ shot placement:"</string>
     <string name="inchesAtText">"Distance to target
 your scope specifies
 for adjustments? (yds)"</string>
+    <string name="languageEnglish">English</string>
+    <string name="languageSpanish">Español</string>
     <string name="logoAltText">The scopesighter logo</string>
     <string name="metersToTargetText">Meters to Target:</string>
     <string name="metricDiameterOfTargetText">Target diameter (cm)</string>
@@ -98,6 +102,7 @@ per increment (in)"</string>
     <string name="scope_prompt">Choose a scope</string>
     <string name="scopesText">Scopes:</string>
     <string name="search_menu_title">Search</string>
+    <string name="selectLanguageButtonText">Select Language</string>
     <string name="showTargetButtonText">Show Target and Begin</string>
     <string name="sightingSessionTitleText">Sighting Session</string>
     <string name="status_bar_notification_info_overflow">999+</string>

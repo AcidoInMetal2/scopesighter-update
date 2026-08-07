@@ -16,7 +16,9 @@ el disparo hacia:"</string>
     <string name="clockwiseAdjustsUpText">"1 incremento de elevación
 en sentido horario mueve
 el disparo hacia:"</string>
+    <string name="clockwiseText">horario</string>
     <string name="closeButtonText">Cerrar</string>
+    <string name="counterClockwiseText">antihorario</string>
     <string name="deleteRangeButtonText">Eliminar campo</string>
     <string name="deleteScopeButtonText">Eliminar mira</string>
     <string name="dialogBodyText">"1) Tocá el botón \"Administrador de miras y campos\"
@@ -39,6 +41,8 @@ el disparo hacia:"</string>
     <string name="inchesAtText">"Distancia al blanco
 que tu mira especifica
 para los ajustes? (yd)"</string>
+    <string name="languageEnglish">Inglés</string>
+    <string name="languageSpanish">Español</string>
     <string name="logoAltText">El logo de ScopeSighter</string>
     <string name="metersToTargetText">Metros al blanco:</string>
     <string name="metricDiameterOfTargetText">Diámetro del blanco (cm)</string>
@@ -66,6 +70,7 @@ incremento (in)"</string>
     <string name="scopeSighterHomeTitleText">Scope Sighter</string>
     <string name="scope_prompt">Elegí una mira</string>
     <string name="scopesText">Miras:</string>
+    <string name="selectLanguageButtonText">Seleccionar idioma</string>
     <string name="showTargetButtonText">Mostrar blanco y comenzar</string>
     <string name="sightingSessionTitleText">Sesión de tiro</string>
     <string name="testString">Prueba</string>

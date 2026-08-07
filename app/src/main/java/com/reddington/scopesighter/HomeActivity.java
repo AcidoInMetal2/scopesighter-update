@@ -1,6 +1,6 @@
 package com.reddington.scopesighter;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
-public class HomeActivity extends Activity {
+public class HomeActivity extends BaseActivity {
     Button aboutButton;
     Context context;
     Button helpButton;
@@ -28,6 +28,7 @@ public class HomeActivity extends Activity {
     Button scopeAndRangeManagerButton;
     ArrayList<Scope> scopeList;
     Spinner scopeSpinner;
+    Button selectLanguageButton;
     private ScopeSighterApplication ssapp;
     TextView title;
     Button unitsButton;
@@ -110,8 +111,32 @@ public class HomeActivity extends Activity {
                 }
             }
         });
+        this.selectLanguageButton = (Button) findViewById(R.id.selectLanguageButton);
+        this.selectLanguageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeActivity.this.showLanguageDialog();
+            }
+        });
         this.ssapp.ensurePopulated();
         updateSpinners();
+    }
+
+    private void showLanguageDialog() {
+        final String[] languageNames = {getString(R.string.languageSpanish), getString(R.string.languageEnglish)};
+        final String[] languageCodes = {"es", "en"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.selectLanguageButtonText));
+        builder.setItems(languageNames, new android.content.DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(android.content.DialogInterface dialogInterface, int which) {
+                BaseActivity.setAppLanguage(HomeActivity.this, languageCodes[which]);
+                dialogInterface.dismiss();
+                HomeActivity.this.recreate();
+            }
+        });
+        builder.show();
     }
 
     /* JADX INFO: Access modifiers changed from: private */

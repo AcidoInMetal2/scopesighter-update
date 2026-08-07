@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
-public class SightingSessionActivity extends Activity {
+public class SightingSessionActivity extends BaseActivity {
     private float diameter;
     private Button dispResultButton;
     private float screenHeight;

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
-public class SavableManagerActivity extends Activity {
+public class SavableManagerActivity extends BaseActivity {
     Button backButton;
     Button clockwiseLeftToggleButton;
     Button clockwiseUpToggleButton;

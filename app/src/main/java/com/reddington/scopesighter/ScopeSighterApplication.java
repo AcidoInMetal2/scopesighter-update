@@ -1,7 +1,12 @@
 package com.reddington.scopesighter;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Environment;
+import android.os.LocaleList;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,9 +16,39 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
 public class ScopeSighterApplication extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(BaseActivity.PREFS_NAME, Context.MODE_PRIVATE);
+        String languageCode = prefs.getString(BaseActivity.LANGUAGE_KEY, null);
+
+        if (languageCode == null) {
+            return context;
+        }
+
+        Locale locale = new Locale(languageCode);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(context.getResources().getConfiguration());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            config.setLocale(locale);
+            LocaleList localeList = new LocaleList(locale);
+            LocaleList.setDefault(localeList);
+            config.setLocales(localeList);
+        } else {
+            config.locale = locale;
+        }
+
+        return context.createConfigurationContext(config);
+    }
     float deviceHeight;
     float deviceWidth;
     String horizontalRotation;
@@ -162,19 +197,21 @@ public class ScopeSighterApplication extends Application {
         }
         float size = x / hits.size();
         float size2 = y / hits.size();
+        String clockwiseText = getString(R.string.clockwiseText);
+        String counterClockwiseText = getString(R.string.counterClockwiseText);
         if (size2 < pixelDiameter && activeScope.getClockwiseOffsetsUp()) {
-            this.verticalRotation = "counter-clockwise";
+            this.verticalRotation = counterClockwiseText;
         } else if ((size2 <= pixelDiameter || !activeScope.getClockwiseOffsetsUp()) && size2 > pixelDiameter && !activeScope.getClockwiseOffsetsUp()) {
-            this.verticalRotation = "counter-clockwise";
+            this.verticalRotation = counterClockwiseText;
         } else {
-            this.verticalRotation = "clockwise";
+            this.verticalRotation = clockwiseText;
         }
         if (size > pixelDiameter && activeScope.getClockwiseOffsetsLeft()) {
-            this.horizontalRotation = "clockwise";
+            this.horizontalRotation = clockwiseText;
         } else if ((size >= pixelDiameter || !activeScope.getClockwiseOffsetsLeft()) && size < pixelDiameter && !activeScope.getClockwiseOffsetsLeft()) {
-            this.horizontalRotation = "clockwise";
+            this.horizontalRotation = clockwiseText;
         } else {
-            this.horizontalRotation = "counter-clockwise";
+            this.horizontalRotation = counterClockwiseText;
         }
         float fAbs = Math.abs((size - pixelDiameter) / this.t.getPixelDiameter());
         float fAbs2 = Math.abs((size2 - pixelDiameter) / this.t.getPixelDiameter());
