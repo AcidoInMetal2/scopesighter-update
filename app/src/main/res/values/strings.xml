@@ -91,7 +91,7 @@ per increment (in)"</string>
     <string name="resultsTitleText">Results</string>
     <string name="resultsToHomeButtonText">New Scope/Range Info</string>
     <string name="saveRangeButtonText">Save Range</string>
-    <string name="saveScopeButtonText">Save Scope</string>
+    <string name="saveScopeButtonText">Save Mira</string>
     <string name="scopeAndRangeManagerButtonText">Scope and Range Manager</string>
     <string name="scopeNamePrompt">Scope Name</string>
     <string name="scopeSighterHomeTitleText">Scope Sighter</string>
@@ -103,7 +103,7 @@ per increment (in)"</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="testString">Test</string>
     <string name="tfPrompt">T/F</string>
-    <string name="titleResults">Results</string>
+    <string name="titleResults">Resultados</string>
     <string name="titleScopeSighterHome">ScopeSighter</string>
     <string name="titleSessionInfo">Session Information</string>
     <string name="titleSightingSession">Sighting Session</string>
@@ -119,5 +119,5 @@ Tap to Toggle"</string>
 Tap to Toggle"</string>
     <string name="windageText">Windage</string>
     <string name="yardsInputPrompt">(yd)</string>
-    <string name="yardsText">yards</string>
+    <string name="yardsText">yardas</string>
 </resources>

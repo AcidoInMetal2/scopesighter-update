@@ -1,9 +1,14 @@
 package com.reddington.scopesighter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.view.View;
 import java.util.ArrayList;
 
@@ -16,6 +21,10 @@ public class TargetView extends View {
     private float x;
     private float y;
 
+    private Bitmap targetBitmap;
+    private Paint targetPaint;
+    private float lastBitmapRadius = -1f;
+
     public TargetView(Context context) {
         super(context);
         this.hits = new ArrayList<>();
@@ -25,6 +34,7 @@ public class TargetView extends View {
         this.ringsPaint.setStyle(Paint.Style.STROKE);
         this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
+        initTargetBitmap(context);
     }
 
     public TargetView(float f, float f2, float f3, Context context) {
@@ -39,11 +49,46 @@ public class TargetView extends View {
         this.ringsPaint.setStyle(Paint.Style.STROKE);
         this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
+        initTargetBitmap(context);
+    }
+
+    private void initTargetBitmap(Context context) {
+        this.targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        this.targetBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.diana11cm);
+    }
+
+    private void updateShaderScale(float outerRadius) {
+        if (this.targetBitmap == null || outerRadius <= 0f) {
+            return;
+        }
+        if (this.lastBitmapRadius == outerRadius) {
+            return;
+        }
+        this.lastBitmapRadius = outerRadius;
+
+        BitmapShader shader = new BitmapShader(this.targetBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+
+        float diameter = outerRadius * 2.0f;
+        float scale = diameter / (float) this.targetBitmap.getWidth();
+
+        Matrix matrix = new Matrix();
+        matrix.setScale(scale, scale);
+        matrix.postTranslate(this.x - outerRadius, this.y - outerRadius);
+        shader.setLocalMatrix(matrix);
+
+        this.targetPaint.setShader(shader);
     }
 
     @Override // android.view.View
     protected void onDraw(Canvas canvas) {
-        canvas.drawCircle(this.x, this.y, this.ringIncrement * 3.0f, this.ringsPaint);
+        float outerRadius = this.ringIncrement * 3.0f;
+
+        if (this.targetBitmap != null) {
+            updateShaderScale(outerRadius);
+            canvas.drawCircle(this.x, this.y, outerRadius, this.targetPaint);
+        }
+
+        canvas.drawCircle(this.x, this.y, outerRadius, this.ringsPaint);
         canvas.drawCircle(this.x, this.y, this.ringIncrement * 2.0f, this.ringsPaint);
         canvas.drawCircle(this.x, this.y, this.ringIncrement, this.ringsPaint);
         for (Hit hit : this.hits) {

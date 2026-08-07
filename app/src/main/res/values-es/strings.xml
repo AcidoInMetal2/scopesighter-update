@@ -1,24 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Ir a la pantalla de inicio</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Desplazarse hacia arriba</string>
-    <string name="abc_action_menu_overflow_description">Más opciones</string>
-    <string name="abc_action_mode_done">Listo</string>
-    <string name="abc_activity_chooser_view_see_all">Ver todo</string>
-    <string name="abc_activitychooserview_choose_application">Seleccionar una aplicación</string>
-    <string name="abc_capital_off">DESACTIVADO</string>
-    <string name="abc_capital_on">ACTIVADO</string>
-    <string name="abc_search_hint">Buscar…</string>
-    <string name="abc_searchview_description_clear">Borrar consulta</string>
-    <string name="abc_searchview_description_query">Consulta</string>
-    <string name="abc_searchview_description_search">Buscar</string>
-    <string name="abc_searchview_description_submit">Enviar consulta</string>
-    <string name="abc_searchview_description_voice">Búsqueda por voz</string>
-    <string name="abc_shareactionprovider_share_with">Compartir con</string>
-    <string name="abc_shareactionprovider_share_with_application">Compartir con %s</string>
-    <string name="abc_toolbar_collapse_description">Contraer</string>
-    <string name="search_menu_title">Buscar</string>
-    <string name="status_bar_notification_info_overflow">+999</string>
+    <string name="aboutButtonText">Acerca de</string>
+    <string name="aboutMainText">"Esto empezó como un programa en Java hace años, y me pareció un buen concepto para aprender Android. Como podrás notar, aprendí más sobre funcionalidad que sobre diseño… No sé cuánto tiempo voy a dedicarle a mejoras, pero si tenés sugerencias, escribime. ¡Gracias por probar ScopeSighter!
+
+PD: Si hay alguien de diseño Android/Web buscando un proyecto para portfolio… conozco a alguien que podría necesitarte."</string>
+    <string name="aboutTitleText">Acerca de ScopeSighter</string>
+    <string name="adjustYourScopeText">"Ajustá tu mira"</string>
+    <string name="app_name">ScopeSighter</string>
+    <string name="backButtonText">Atrás</string>
+    <string name="backgroundContentDescription">Desvanecer fondo</string>
+    <string name="clicksText">clics</string>
+    <string name="clockwiseAdjustsLeftText">"1 incremento de deriva
+en sentido horario mueve
+el disparo hacia:"</string>
+    <string name="clockwiseAdjustsUpText">"1 incremento de elevación
+en sentido horario mueve
+el disparo hacia:"</string>
+    <string name="closeButtonText">Cerrar</string>
+    <string name="deleteRangeButtonText">Eliminar campo</string>
+    <string name="deleteScopeButtonText">Eliminar mira</string>
+    <string name="dialogBodyText">"1) Tocá el botón \"Administrador de miras y campos\"
+2) Ingresá los datos de tu mira y campo de tiro
+3) Dejá el teléfono y hacé una serie de disparos
+4) Presioná el botón \"Nueva sesión\"
+5) Tocá la pantalla marcando dónde cayeron tus disparos en el blanco de papel
+6) Presioná \"Mostrar resultados\", hacé los ajustes, ¡y repetí las veces que sea necesario!"</string>
+    <string name="dialogTitleText">El arte de usar ScopeSighter</string>
+    <string name="diameterOfTargetText">Diámetro del blanco (in)</string>
+    <string name="displayResultButtonText">Mostrar resultados</string>
+    <string name="elevationText">Elevación</string>
+    <string name="feetToTargetText">Pies al blanco:</string>
+    <string name="freshTargetButtonText">Blanco nuevo para la próxima serie</string>
+    <string name="ftInputPrompt">ft</string>
+    <string name="goButtonText">¡Ir!</string>
+    <string name="helpButtonText">¡Ayuda!</string>
+    <string name="homeButtonText">Inicio</string>
+    <string name="inInputPrompt">in</string>
+    <string name="inchesAtText">"Distancia al blanco
+que tu mira especifica
+para los ajustes? (yd)"</string>
+    <string name="logoAltText">El logo de ScopeSighter</string>
+    <string name="metersToTargetText">Metros al blanco:</string>
+    <string name="metricDiameterOfTargetText">Diámetro del blanco (cm)</string>
+    <string name="metricDistanceForScopeText">"Distancia al blanco
+que tu mira especifica
+para los ajustes? (m)"</string>
+    <string name="metricOneClickEqualsText">"Distancia que se mueve
+el disparo por cada
+incremento (cm)"</string>
+    <string name="newSessionButtonText">Nueva sesión</string>
+    <string name="oneClickEqualsText">"Distancia que se mueve
+el disparo por cada
+incremento (in)"</string>
+    <string name="pleaseInputValuesText">Ingresá la información solicitada a continuación. Estos datos se usarán para calcular los ajustes correctos que debés hacer en tu mira, según los agrupamientos de disparos que indiques en la siguiente pantalla.</string>
+    <string name="qMark">Ayuda</string>
+    <string name="rangeNamePrompt">Nombre del campo</string>
+    <string name="range_prompt">Elegí un campo</string>
+    <string name="rangesText">Campos:</string>
+    <string name="resultsTitleText">Resultados</string>
+    <string name="resultsToHomeButtonText">Nueva info de mira/campo</string>
+    <string name="saveRangeButtonText">Guardar campo</string>
+    <string name="saveScopeButtonText">Guardar mira</string>
+    <string name="scopeAndRangeManagerButtonText">Administrador de miras y campos</string>
+    <string name="scopeNamePrompt">Nombre de la mira</string>
+    <string name="scopeSighterHomeTitleText">Scope Sighter</string>
+    <string name="scope_prompt">Elegí una mira</string>
+    <string name="scopesText">Miras:</string>
+    <string name="showTargetButtonText">Mostrar blanco y comenzar</string>
+    <string name="sightingSessionTitleText">Sesión de tiro</string>
+    <string name="testString">Prueba</string>
+    <string name="tfPrompt">V/F</string>
+    <string name="titleResults">Resultados</string>
+    <string name="titleScopeSighterHome">ScopeSighter</string>
+    <string name="titleSessionInfo">Información de sesión</string>
+    <string name="titleSightingSession">Sesión de tiro</string>
+    <string name="toggleDown">Abajo</string>
+    <string name="toggleLeft">Izquierda</string>
+    <string name="toggleRight">Derecha</string>
+    <string name="toggleUp">Arriba</string>
+    <string name="unitsButtonImperialText">La app está en Imperial</string>
+    <string name="unitsButtonImperialTextToggle">"La app está en Imperial
+Tocá para cambiar"</string>
+    <string name="unitsButtonMetricText">La app está en Métrico</string>
+    <string name="unitsButtonMetricTextToggle">"La app está en Métrico
+Tocá para cambiar"</string>
+    <string name="windageText">Deriva</string>
+    <string name="yardsInputPrompt">(yd)</string>
+    <string name="yardsText">yardas</string>
 </resources>
