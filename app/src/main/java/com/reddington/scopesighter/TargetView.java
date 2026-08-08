@@ -54,7 +54,7 @@ public class TargetView extends View {
 
     private void initTargetBitmap(Context context) {
         this.targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        this.targetBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.diana11cm);
+        this.targetBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dianagenerico);
     }
 
     private void updateShaderScale(float outerRadius) {

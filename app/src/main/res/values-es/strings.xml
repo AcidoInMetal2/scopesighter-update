@@ -16,13 +16,13 @@ el disparo hacia:"</string>
     <string name="clockwiseAdjustsUpText">"1 incremento de elevación
 en sentido horario mueve
 el disparo hacia:"</string>
-    <string name="clockwiseText">horario</string>
+    <string name="clockwiseText">sentido horario</string>
     <string name="closeButtonText">Cerrar</string>
-    <string name="counterClockwiseText">antihorario</string>
-    <string name="deleteRangeButtonText">Eliminar campo</string>
+    <string name="counterClockwiseText">sentido antihorario</string>
+    <string name="deleteRangeButtonText">Eliminar blanco</string>
     <string name="deleteScopeButtonText">Eliminar mira</string>
-    <string name="dialogBodyText">"1) Tocá el botón \"Administrador de miras y campos\"
-2) Ingresá los datos de tu mira y campo de tiro
+    <string name="dialogBodyText">"1) Tocá el botón \"Administrador de miras y blancos\"
+2) Ingresá los datos de tu mira y blanco de tiro
 3) Dejá el teléfono y hacé una serie de disparos
 4) Presioná el botón \"Nueva sesión\"
 5) Tocá la pantalla marcando dónde cayeron tus disparos en el blanco de papel
@@ -58,14 +58,14 @@ el disparo por cada
 incremento (in)"</string>
     <string name="pleaseInputValuesText">Ingresá la información solicitada a continuación. Estos datos se usarán para calcular los ajustes correctos que debés hacer en tu mira, según los agrupamientos de disparos que indiques en la siguiente pantalla.</string>
     <string name="qMark">Ayuda</string>
-    <string name="rangeNamePrompt">Nombre del campo</string>
-    <string name="range_prompt">Elegí un campo</string>
-    <string name="rangesText">Campos:</string>
+    <string name="rangeNamePrompt">Nombre del Blanco</string>
+    <string name="range_prompt">Elegí un Blanco</string>
+    <string name="rangesText">Blancos:</string>
     <string name="resultsTitleText">Resultados</string>
-    <string name="resultsToHomeButtonText">Nueva info de mira/campo</string>
-    <string name="saveRangeButtonText">Guardar campo</string>
+    <string name="resultsToHomeButtonText">Nueva info de mira/blanco</string>
+    <string name="saveRangeButtonText">Guardar blanco</string>
     <string name="saveScopeButtonText">Guardar mira</string>
-    <string name="scopeAndRangeManagerButtonText">Administrador de miras y campos</string>
+    <string name="scopeAndRangeManagerButtonText">Administrador de miras y blancos</string>
     <string name="scopeNamePrompt">Nombre de la mira</string>
     <string name="scopeSighterHomeTitleText">Scope Sighter</string>
     <string name="scope_prompt">Elegí una mira</string>
