@@ -1,6 +1,5 @@
 package com.reddington.scopesighter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -23,8 +22,9 @@ public class SightingSessionActivity extends BaseActivity {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.sightingsessionlayout);
-        this.targetView = new TargetView(this);
         this.ssapp = (ScopeSighterApplication) getApplication();
+        String targetBackground = this.ssapp.getActiveRange().getTargetBackground();
+        this.targetView = new TargetView(this, targetBackground);
         this.targetLayout = (RelativeLayout) findViewById(R.id.targetLayout);
         this.t = this.ssapp.getTarget();
         this.dispResultButton = (Button) findViewById(R.id.displayResultButton);
@@ -41,7 +41,7 @@ public class SightingSessionActivity extends BaseActivity {
         } else {
             this.diameter = this.screenHeight;
         }
-        this.targetView = new TargetView(this.diameter, this.screenWidth / 2.0f, this.screenWidth / 2.0f, this);
+        this.targetView = new TargetView(this.diameter, this.screenWidth / 2.0f, this.screenWidth / 2.0f, this, targetBackground);
         this.targetView.setOnTouchListener(new View.OnTouchListener() { // from class: com.reddington.scopesighter.SightingSessionActivity.2
             @Override // android.view.View.OnTouchListener
             public boolean onTouch(View view, MotionEvent motionEvent) {

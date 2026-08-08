@@ -17,6 +17,10 @@ el disparo hacia:"</string>
 en sentido horario mueve
 el disparo hacia:"</string>
     <string name="clockwiseText">sentido horario</string>
+    <string name="selectBackgroundText">Seleccionar Fondo</string>
+    <string name="targetBackgroundOption1">SW 4 Elementos</string>
+    <string name="targetBackgroundOption2">SW 12 Elementos</string>
+    <string name="targetBackgroundOption3">Blanco Genérico</string>
     <string name="closeButtonText">Cerrar</string>
     <string name="counterClockwiseText">sentido antihorario</string>
     <string name="deleteRangeButtonText">Eliminar blanco</string>

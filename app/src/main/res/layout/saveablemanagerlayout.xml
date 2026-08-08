@@ -49,6 +49,12 @@
                     <EditText android:id="@id/diameterOfTargetEditText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_span="2" android:text="@string/inInputPrompt" android:layout_weight="0.5" android:inputType="numberSigned|numberDecimal" />
                 </TableRow>
                 <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textColor="#FF0000" android:id="@+id/targetBackgroundTextView" android:paddingLeft="10.0dp" android:paddingTop="10.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/selectBackgroundText" android:layout_span="3" />
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Spinner android:id="@+id/targetBackgroundSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_span="3" />
+                </TableRow>
+                <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
                     <Button android:id="@id/saveRangeButton" android:text="@string/saveRangeButtonText" android:layout_weight="0.333" />
                     <Button android:id="@id/deleteRangeButton" android:text="@string/deleteRangeButtonText" android:layout_weight="0.333" />
                     <Button android:id="@id/backButton" android:text="@string/backButtonText" android:layout_weight="0.333" />

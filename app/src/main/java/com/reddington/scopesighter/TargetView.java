@@ -26,6 +26,10 @@ public class TargetView extends View {
     private float lastBitmapRadius = -1f;
 
     public TargetView(Context context) {
+        this(context, "dianagenerico");
+    }
+
+    public TargetView(Context context, String targetBackgroundName) {
         super(context);
         this.hits = new ArrayList<>();
         this.ringsPaint = new Paint();
@@ -34,10 +38,14 @@ public class TargetView extends View {
         this.ringsPaint.setStyle(Paint.Style.STROKE);
         this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
-        initTargetBitmap(context);
+        initTargetBitmap(context, targetBackgroundName);
     }
 
     public TargetView(float f, float f2, float f3, Context context) {
+        this(f, f2, f3, context, "dianagenerico");
+    }
+
+    public TargetView(float f, float f2, float f3, Context context, String targetBackgroundName) {
         super(context);
         this.hits = new ArrayList<>();
         this.ringsPaint = new Paint();
@@ -49,12 +57,21 @@ public class TargetView extends View {
         this.ringsPaint.setStyle(Paint.Style.STROKE);
         this.hitPaint.setColor(Color.BLACK);
         this.hitPaint.setStyle(Paint.Style.FILL);
-        initTargetBitmap(context);
+        initTargetBitmap(context, targetBackgroundName);
     }
 
-    private void initTargetBitmap(Context context) {
+    private void initTargetBitmap(Context context, String targetBackgroundName) {
         this.targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        this.targetBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dianagenerico);
+        if (targetBackgroundName == null) {
+            targetBackgroundName = "dianagenerico";
+        }
+        int resId = context.getResources().getIdentifier(targetBackgroundName, "drawable", context.getPackageName());
+        if (resId == 0) {
+            resId = context.getResources().getIdentifier("dianagenerico", "drawable", context.getPackageName());
+        }
+        if (resId != 0) {
+            this.targetBitmap = BitmapFactory.decodeResource(context.getResources(), resId);
+        }
     }
 
     private void updateShaderScale(float outerRadius) {
@@ -88,9 +105,6 @@ public class TargetView extends View {
             canvas.drawCircle(this.x, this.y, outerRadius, this.targetPaint);
         }
 
-        canvas.drawCircle(this.x, this.y, outerRadius, this.ringsPaint);
-        canvas.drawCircle(this.x, this.y, this.ringIncrement * 2.0f, this.ringsPaint);
-        canvas.drawCircle(this.x, this.y, this.ringIncrement, this.ringsPaint);
         for (Hit hit : this.hits) {
             canvas.drawCircle(hit.getX(), hit.getY(), 10.0f, this.hitPaint);
         }

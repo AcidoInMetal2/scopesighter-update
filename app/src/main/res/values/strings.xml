@@ -48,6 +48,10 @@ shot placement:"</string>
 clockwise moves
 shot placement:"</string>
     <string name="clockwiseText">clockwise</string>
+    <string name="selectBackgroundText">Select Background</string>
+    <string name="targetBackgroundOption1">SW 4 Elementos</string>
+    <string name="targetBackgroundOption2">SW 12 Elementos</string>
+    <string name="targetBackgroundOption3">Genéric Target</string>
     <string name="closeButtonText">Close</string>
     <string name="counterClockwiseText">counter-clockwise</string>
     <string name="deleteRangeButtonText">Delete Range</string>

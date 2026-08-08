@@ -1,6 +1,5 @@
 package com.reddington.scopesighter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
 public class SavableManagerActivity extends BaseActivity {
@@ -35,6 +36,9 @@ public class SavableManagerActivity extends BaseActivity {
     ScopeSighterApplication ssapp;
     EditText targetDiameterEditText;
     EditText yardsForAdjustEditText;
+    Spinner targetBackgroundSpinner;
+
+    private static final List<String> TARGET_BACKGROUND_VALUES = Arrays.asList("diana11cm", "diana7cm", "dianagenerico");
 
     @Override // android.app.Activity
     public void onCreate(Bundle bundle) {
@@ -128,8 +132,21 @@ public class SavableManagerActivity extends BaseActivity {
         this.rangeNameEditText = (EditText) findViewById(R.id.rangeNameEditText);
         this.feetToTargetEditText = (EditText) findViewById(R.id.feetToTargetEditText);
         this.targetDiameterEditText = (EditText) findViewById(R.id.diameterOfTargetEditText);
+        this.targetBackgroundSpinner = (Spinner) findViewById(R.id.targetBackgroundSpinner);
+        setupTargetBackgroundSpinner();
         updateSpinners();
         setUnitLabels();
+    }
+
+    private void setupTargetBackgroundSpinner() {
+        String[] displayNames = {
+                getString(R.string.targetBackgroundOption1),
+                getString(R.string.targetBackgroundOption2),
+                getString(R.string.targetBackgroundOption3)
+        };
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, displayNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        this.targetBackgroundSpinner.setAdapter(adapter);
     }
 
     @Override // android.app.Activity
@@ -174,6 +191,11 @@ public class SavableManagerActivity extends BaseActivity {
         this.rangeNameEditText.setText(activeRange.getName());
         this.feetToTargetEditText.setText(this.df.format(activeRange.getDistanceToTarget()));
         this.targetDiameterEditText.setText(this.df.format(activeRange.getTargetDiameter()));
+        int index = TARGET_BACKGROUND_VALUES.indexOf(activeRange.getTargetBackground());
+        if (index < 0) {
+            index = TARGET_BACKGROUND_VALUES.indexOf("dianagenerico");
+        }
+        this.targetBackgroundSpinner.setSelection(index);
     }
 
     private void updateSpinners() {
@@ -271,7 +293,8 @@ public class SavableManagerActivity extends BaseActivity {
     /* JADX INFO: Access modifiers changed from: private */
     public void saveRange() {
         if (validateRangeAttributes()) {
-            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString());
+            String selectedBackground = TARGET_BACKGROUND_VALUES.get(this.targetBackgroundSpinner.getSelectedItemPosition());
+            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString(), selectedBackground);
             Iterator<Range> it = this.ssapp.getRanges().iterator();
             boolean z = false;
             while (it.hasNext()) {
@@ -294,7 +317,8 @@ public class SavableManagerActivity extends BaseActivity {
     public void deleteRange() {
         updateRangeControls();
         if (validateRangeAttributes()) {
-            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString());
+            String selectedBackground = TARGET_BACKGROUND_VALUES.get(this.targetBackgroundSpinner.getSelectedItemPosition());
+            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString(), selectedBackground);
             Iterator<Range> it = this.ssapp.getRanges().iterator();
             boolean z = false;
             while (it.hasNext()) {
