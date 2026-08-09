@@ -7,7 +7,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.reddington.scopesighter"
+        applicationId = "com.acidoinmetal.scopesighter"
         minSdk = 21
         targetSdk = 34
         versionCode = 1

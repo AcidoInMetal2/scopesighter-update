@@ -99,7 +99,7 @@ per increment (in)"</string>
     <string name="resultsTitleText">Results</string>
     <string name="resultsToHomeButtonText">New Scope/Range Info</string>
     <string name="saveRangeButtonText">Save Range</string>
-    <string name="saveScopeButtonText">Save Mira</string>
+    <string name="saveScopeButtonText">Save Scope</string>
     <string name="scopeAndRangeManagerButtonText">Scope and Range Manager</string>
     <string name="scopeNamePrompt">Scope Name</string>
     <string name="scopeSighterHomeTitleText">Scope Sighter</string>

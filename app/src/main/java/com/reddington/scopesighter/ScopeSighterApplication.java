@@ -182,7 +182,7 @@ public class ScopeSighterApplication extends Application {
         convertSavablesToMetric();
     }
 
-    public void calculate() {
+    public void calculate(Context context) {
         int i;
         int i2;
         Scope activeScope = getActiveScope();
@@ -197,8 +197,9 @@ public class ScopeSighterApplication extends Application {
         }
         float size = x / hits.size();
         float size2 = y / hits.size();
-        String clockwiseText = getString(R.string.clockwiseText);
-        String counterClockwiseText = getString(R.string.counterClockwiseText);
+        Context stringContext = (context != null) ? context : this;
+        String clockwiseText = stringContext.getString(R.string.clockwiseText);
+        String counterClockwiseText = stringContext.getString(R.string.counterClockwiseText);
         if (size2 < pixelDiameter && activeScope.getClockwiseOffsetsUp()) {
             this.verticalRotation = counterClockwiseText;
         } else if ((size2 <= pixelDiameter || !activeScope.getClockwiseOffsetsUp()) && size2 > pixelDiameter && !activeScope.getClockwiseOffsetsUp()) {

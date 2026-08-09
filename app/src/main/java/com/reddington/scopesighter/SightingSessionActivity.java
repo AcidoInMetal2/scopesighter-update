@@ -63,7 +63,7 @@ public class SightingSessionActivity extends BaseActivity {
 
     public void dispResultButtonClicked() {
         this.ssapp.setTarget(this.t);
-        this.ssapp.calculate();
+        this.ssapp.calculate(this);
         startActivity(new Intent(this, (Class<?>) SessionResultsActivity.class));
     }
 }
