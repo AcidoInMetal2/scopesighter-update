@@ -26,7 +26,7 @@ el disparo hacia:"</string>
     <string name="deleteRangeButtonText">Eliminar blanco</string>
     <string name="deleteScopeButtonText">Eliminar mira</string>
     <string name="dialogBodyText">"1) Tocá el botón \"Administrador de miras y blancos\"
-2) Ingresá los datos de tu mira y blanco de tiro
+2) Ingresá los datos de tu mira y blanco de tiro (muy importante el diametro del blanco!)
 3) Dejá el teléfono y hacé una serie de disparos
 4) Presioná el botón \"Nueva sesión\"
 5) Tocá la pantalla marcando dónde cayeron tus disparos en el blanco de papel
@@ -36,7 +36,7 @@ el disparo hacia:"</string>
     <string name="displayResultButtonText">Mostrar resultados</string>
     <string name="elevationText">Elevación</string>
     <string name="feetToTargetText">Pies al blanco:</string>
-    <string name="freshTargetButtonText">Blanco nuevo para la próxima serie</string>
+    <string name="freshTargetButtonText">Limpiar Blanco para una nueva serie</string>
     <string name="ftInputPrompt">ft</string>
     <string name="goButtonText">¡Ir!</string>
     <string name="helpButtonText">¡Ayuda!</string>
