@@ -96,4 +96,13 @@ Tocá para cambiar"</string>
     <string name="windageText">Deriva</string>
     <string name="yardsInputPrompt">(yd)</string>
     <string name="yardsText">yardas</string>
+    <string name="toastScopeSaved">Mira guardada</string>
+    <string name="toastScopeDeleted">Mira eliminada</string>
+    <string name="toastRangeSaved">Blanco guardado</string>
+    <string name="toastRangeDeleted">Blanco eliminado</string>
+    <string name="toastCheckScopeInputs">Revisá los datos de la mira</string>
+    <string name="toastCheckRangeInputs">Revisá los datos del blanco</string>
+    <string name="toastScopeNotFound">No existe una mira con esos datos. Volvé a elegirla y tocá eliminar.</string>
+    <string name="toastRangeNotFound">No existe un blanco con esos datos. Volvé a elegirlo y tocá eliminar.</string>
+    <string name="toastInvalidNumber">Número inválido. Usá dígitos y punto o coma decimal.</string>
 </resources>

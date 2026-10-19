@@ -12,10 +12,12 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 /* JADX INFO: loaded from: E:\ScopSighter Proyect\Scope_Sighter_v1.3.3.apk\classes.dex */
 public class SavableManagerActivity extends BaseActivity {
@@ -24,7 +26,11 @@ public class SavableManagerActivity extends BaseActivity {
     Button clockwiseUpToggleButton;
     Button deleteRangeButton;
     Button deleteScopeButton;
-    DecimalFormat df = new DecimalFormat("@####");
+    // Siempre con punto decimal, sin importar el idioma de la app (ver parseNumber)
+    DecimalFormat df = new DecimalFormat("@####", DecimalFormatSymbols.getInstance(Locale.US));
+    // Estado real de los toggles: ya no se deduce del texto del botón
+    private boolean clockwiseLeft = true;
+    private boolean clockwiseUp = true;
     EditText feetToTargetEditText;
     EditText oneClickEqualsEditText;
     EditText rangeNameEditText;
@@ -73,22 +79,16 @@ public class SavableManagerActivity extends BaseActivity {
         this.clockwiseUpToggleButton.setOnClickListener(new View.OnClickListener() { // from class: com.reddington.scopesighter.SavableManagerActivity.3
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                if (SavableManagerActivity.this.clockwiseUpToggleButton.getText().toString().equals("Up")) {
-                    SavableManagerActivity.this.clockwiseUpToggleButton.setText("Down");
-                } else {
-                    SavableManagerActivity.this.clockwiseUpToggleButton.setText("Up");
-                }
+                SavableManagerActivity.this.clockwiseUp = !SavableManagerActivity.this.clockwiseUp;
+                SavableManagerActivity.this.refreshToggleLabels();
             }
         });
         this.clockwiseLeftToggleButton = (Button) findViewById(R.id.clockwiseLeftToggleButton);
         this.clockwiseLeftToggleButton.setOnClickListener(new View.OnClickListener() { // from class: com.reddington.scopesighter.SavableManagerActivity.4
             @Override // android.view.View.OnClickListener
             public void onClick(View view) {
-                if (SavableManagerActivity.this.clockwiseLeftToggleButton.getText().toString().equals("Left")) {
-                    SavableManagerActivity.this.clockwiseLeftToggleButton.setText("Right");
-                } else {
-                    SavableManagerActivity.this.clockwiseLeftToggleButton.setText("Left");
-                }
+                SavableManagerActivity.this.clockwiseLeft = !SavableManagerActivity.this.clockwiseLeft;
+                SavableManagerActivity.this.refreshToggleLabels();
             }
         });
         this.saveScopeButton = (Button) findViewById(R.id.saveScopeButton);
@@ -171,18 +171,22 @@ public class SavableManagerActivity extends BaseActivity {
     public void updateScopeControls() {
         Scope activeScope = this.ssapp.getActiveScope();
         this.scopeNameEditText.setText(activeScope.getName());
-        if (activeScope.getClockwiseOffsetsLeft()) {
-            this.clockwiseLeftToggleButton.setText(getString(R.string.toggleLeft));
-        } else {
-            this.clockwiseLeftToggleButton.setText(getString(R.string.toggleRight));
-        }
-        if (activeScope.getClockwiseOffsetsUp()) {
-            this.clockwiseUpToggleButton.setText(getString(R.string.toggleUp));
-        } else {
-            this.clockwiseUpToggleButton.setText(getString(R.string.toggleDown));
-        }
+        this.clockwiseLeft = activeScope.getClockwiseOffsetsLeft();
+        this.clockwiseUp = activeScope.getClockwiseOffsetsUp();
+        refreshToggleLabels();
         this.oneClickEqualsEditText.setText(this.df.format(activeScope.getOffsetPerClick()));
         this.yardsForAdjustEditText.setText(this.df.format(activeScope.getDistanceForAdjust()));
+    }
+
+    /** Pinta los botones según el estado booleano, en el idioma activo. */
+    void refreshToggleLabels() {
+        this.clockwiseLeftToggleButton.setText(getString(this.clockwiseLeft ? R.string.toggleLeft : R.string.toggleRight));
+        this.clockwiseUpToggleButton.setText(getString(this.clockwiseUp ? R.string.toggleUp : R.string.toggleDown));
+    }
+
+    /** Acepta "0.25" y "0,25". Tira NumberFormatException si no es un número. */
+    private static double parseNumber(EditText editText) {
+        return Double.parseDouble(editText.getText().toString().trim().replace(',', '.'));
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -228,7 +232,7 @@ public class SavableManagerActivity extends BaseActivity {
         if (!this.scopeNameEditText.getText().toString().equals("") && !this.yardsForAdjustEditText.getText().toString().equals("") && !this.oneClickEqualsEditText.getText().toString().equals("")) {
             return true;
         }
-        Toast.makeText(getApplicationContext(), "Check Scope Inputs", 1).show();
+        Toast.makeText(this, getString(R.string.toastCheckScopeInputs), Toast.LENGTH_LONG).show();
         return false;
     }
 
@@ -236,7 +240,7 @@ public class SavableManagerActivity extends BaseActivity {
         if (!this.rangeNameEditText.getText().toString().equals("") && !this.feetToTargetEditText.getText().toString().equals("") && !this.targetDiameterEditText.getText().toString().equals("")) {
             return true;
         }
-        Toast.makeText(getApplicationContext(), "Check Range Inputs", 1).show();
+        Toast.makeText(this, getString(R.string.toastCheckRangeInputs), Toast.LENGTH_LONG).show();
         return false;
     }
 
@@ -245,11 +249,39 @@ public class SavableManagerActivity extends BaseActivity {
         startActivity(new Intent(this, (Class<?>) HomeActivity.class));
     }
 
+    /** Arma la mira con lo que hay en pantalla; null (y aviso) si algún número es inválido. */
+    private Scope buildScopeFromInputs() {
+        try {
+            return new Scope(this.scopeNameEditText.getText().toString(),
+                    parseNumber(this.oneClickEqualsEditText),
+                    parseNumber(this.yardsForAdjustEditText),
+                    this.clockwiseLeft, this.clockwiseUp);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, getString(R.string.toastInvalidNumber), Toast.LENGTH_LONG).show();
+            return null;
+        }
+    }
+
+    /** Arma el blanco con lo que hay en pantalla; null (y aviso) si algún número es inválido. */
+    private Range buildRangeFromInputs() {
+        try {
+            String selectedBackground = TARGET_BACKGROUND_VALUES.get(this.targetBackgroundSpinner.getSelectedItemPosition());
+            return new Range((float) parseNumber(this.feetToTargetEditText),
+                    (float) parseNumber(this.targetDiameterEditText),
+                    this.rangeNameEditText.getText().toString(), selectedBackground);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, getString(R.string.toastInvalidNumber), Toast.LENGTH_LONG).show();
+            return null;
+        }
+    }
+
     /* JADX INFO: Access modifiers changed from: private */
     public void saveScope() {
         if (validateScopeAttributes()) {
-            boolean zEquals = this.clockwiseUpToggleButton.getText().equals("Up");
-            Scope scope = new Scope(this.scopeNameEditText.getText().toString(), Double.parseDouble(this.oneClickEqualsEditText.getText().toString()), Double.parseDouble(this.yardsForAdjustEditText.getText().toString()), this.clockwiseLeftToggleButton.getText().equals("Left"), zEquals);
+            Scope scope = buildScopeFromInputs();
+            if (scope == null) {
+                return;
+            }
             Iterator<Scope> it = this.ssapp.getScopes().iterator();
             boolean z = false;
             while (it.hasNext()) {
@@ -258,12 +290,12 @@ public class SavableManagerActivity extends BaseActivity {
                 }
             }
             if (z) {
-                Toast.makeText(getApplicationContext(), "Scope Saved", 0).show();
+                Toast.makeText(this, getString(R.string.toastScopeSaved), Toast.LENGTH_SHORT).show();
                 return;
             }
             this.ssapp.updateSavables(scope);
             updateSpinners();
-            Toast.makeText(getApplicationContext(), "Scope Saved", 0).show();
+            Toast.makeText(this, getString(R.string.toastScopeSaved), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -271,8 +303,10 @@ public class SavableManagerActivity extends BaseActivity {
     public void deleteScope() {
         updateScopeControls();
         if (validateScopeAttributes()) {
-            boolean zEquals = this.clockwiseUpToggleButton.getText().equals("Up");
-            Scope scope = new Scope(this.scopeNameEditText.getText().toString(), Double.parseDouble(this.oneClickEqualsEditText.getText().toString()), Double.parseDouble(this.yardsForAdjustEditText.getText().toString()), this.clockwiseLeftToggleButton.getText().equals("Left"), zEquals);
+            Scope scope = buildScopeFromInputs();
+            if (scope == null) {
+                return;
+            }
             Iterator<Scope> it = this.ssapp.getScopes().iterator();
             boolean z = false;
             while (it.hasNext()) {
@@ -281,20 +315,22 @@ public class SavableManagerActivity extends BaseActivity {
                 }
             }
             if (!z) {
-                Toast.makeText(getApplicationContext(), "No scope with specified attributes exists. Reselect scope and press delete.", 0).show();
+                Toast.makeText(this, getString(R.string.toastScopeNotFound), Toast.LENGTH_SHORT).show();
                 return;
             }
             this.ssapp.updateSavables(scope);
             updateSpinners();
-            Toast.makeText(getApplicationContext(), "Scope Deleted", 0).show();
+            Toast.makeText(this, getString(R.string.toastScopeDeleted), Toast.LENGTH_SHORT).show();
         }
     }
 
     /* JADX INFO: Access modifiers changed from: private */
     public void saveRange() {
         if (validateRangeAttributes()) {
-            String selectedBackground = TARGET_BACKGROUND_VALUES.get(this.targetBackgroundSpinner.getSelectedItemPosition());
-            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString(), selectedBackground);
+            Range range = buildRangeFromInputs();
+            if (range == null) {
+                return;
+            }
             Iterator<Range> it = this.ssapp.getRanges().iterator();
             boolean z = false;
             while (it.hasNext()) {
@@ -303,13 +339,13 @@ public class SavableManagerActivity extends BaseActivity {
                 }
             }
             if (z) {
-                Toast.makeText(getApplicationContext(), "Range Saved", 0).show();
+                Toast.makeText(this, getString(R.string.toastRangeSaved), Toast.LENGTH_SHORT).show();
                 return;
             }
             this.ssapp.updateSavables(range);
             updateRangeControls();
             updateSpinners();
-            Toast.makeText(getApplicationContext(), "Range Saved", 0).show();
+            Toast.makeText(this, getString(R.string.toastRangeSaved), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -317,8 +353,10 @@ public class SavableManagerActivity extends BaseActivity {
     public void deleteRange() {
         updateRangeControls();
         if (validateRangeAttributes()) {
-            String selectedBackground = TARGET_BACKGROUND_VALUES.get(this.targetBackgroundSpinner.getSelectedItemPosition());
-            Range range = new Range(Float.parseFloat(this.feetToTargetEditText.getText().toString()), Float.parseFloat(this.targetDiameterEditText.getText().toString()), this.rangeNameEditText.getText().toString(), selectedBackground);
+            Range range = buildRangeFromInputs();
+            if (range == null) {
+                return;
+            }
             Iterator<Range> it = this.ssapp.getRanges().iterator();
             boolean z = false;
             while (it.hasNext()) {
@@ -327,12 +365,12 @@ public class SavableManagerActivity extends BaseActivity {
                 }
             }
             if (!z) {
-                Toast.makeText(getApplicationContext(), "No range with specified attributes exists. Reselect range and press delete.", 0).show();
+                Toast.makeText(this, getString(R.string.toastRangeNotFound), Toast.LENGTH_SHORT).show();
                 return;
             }
             this.ssapp.updateSavables(range);
             updateSpinners();
-            Toast.makeText(getApplicationContext(), "Range Deleted", 0).show();
+            Toast.makeText(this, getString(R.string.toastRangeDeleted), Toast.LENGTH_SHORT).show();
         }
     }
 }

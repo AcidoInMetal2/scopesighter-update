@@ -17,7 +17,7 @@
                 </TableRow>
                 <TableRow android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
                     <TextView android:textColor="#000000" android:id="@id/clockwiseLeftTextView" android:paddingLeft="10.0dp" android:paddingTop="5.0dp" android:paddingBottom="5.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dp" android:text="@string/clockwiseAdjustsLeftText" android:lines="3" android:layout_weight="0.5" />
-                    <Button android:id="@id/clockwiseLeftToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggleLeft" android:layout_weight="0.5" android:onClick="onWindageButtonClicked" />
+                    <Button android:id="@id/clockwiseLeftToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/toggleLeft" android:layout_weight="0.5" />
                 </TableRow>
                 <TableRow android:gravity="center">
                     <TextView android:textColor="#000000" android:id="@id/oneClickEqualsTextView" android:paddingLeft="10.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/oneClickEqualsText" android:layout_weight="0.5" />

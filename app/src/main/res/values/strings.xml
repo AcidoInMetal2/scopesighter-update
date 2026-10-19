@@ -129,4 +129,13 @@ Tap to Toggle"</string>
     <string name="windageText">Windage</string>
     <string name="yardsInputPrompt">(yd)</string>
     <string name="yardsText">yardas</string>
+    <string name="toastScopeSaved">Scope Saved</string>
+    <string name="toastScopeDeleted">Scope Deleted</string>
+    <string name="toastRangeSaved">Range Saved</string>
+    <string name="toastRangeDeleted">Range Deleted</string>
+    <string name="toastCheckScopeInputs">Check Scope Inputs</string>
+    <string name="toastCheckRangeInputs">Check Range Inputs</string>
+    <string name="toastScopeNotFound">No scope with specified attributes exists. Reselect scope and press delete.</string>
+    <string name="toastRangeNotFound">No range with specified attributes exists. Reselect range and press delete.</string>
+    <string name="toastInvalidNumber">Invalid number. Use digits and a decimal point.</string>
 </resources>
